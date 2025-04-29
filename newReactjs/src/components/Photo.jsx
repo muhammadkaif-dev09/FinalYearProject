@@ -36,23 +36,35 @@ const Photo = () => {
     };
 
     const handleSave = async () => {
-        if (!selectedFile) {
-            alert("Please select a file before saving.");
-            return;
-        }
-
         setIsLoading(true);
+    
         const formData = new FormData();
-        formData.append("profilePhoto", selectedFile);
-
+    
+        if (selectedFile) {
+            // If user selected a file, upload that file
+            formData.append("profilePhoto", selectedFile);
+        } else {
+            // If user did NOT select a file, fetch the emptyUser image
+            try {
+                const response = await fetch(emptyUser);
+                const blob = await response.blob();
+                const defaultFile = new File([blob], "defaultProfile.jpg", { type: blob.type });
+                formData.append("profilePhoto", defaultFile);
+            } catch (error) {
+                console.error("Error loading default image:", error);
+                setIsLoading(false);
+                return;
+            }
+        }
+    
         try {
             const res = await axios.patch(`/api/user/profilePhotochange`, formData, {
                 withCredentials: true,
             });
-
+    
             const updatedImageUrl = res.data.profilePhoto;
             localStorage.setItem("profilePicture", updatedImageUrl);
-
+    
             setTimeout(() => {
                 navigate("/loader");
                 setTimeout(() => {
@@ -71,6 +83,7 @@ const Photo = () => {
             setIsLoading(false);
         }
     };
+    
 
     const handleImageClick = () => {
         document.getElementById("fileInput").click();

@@ -4,6 +4,7 @@ import logos from '../assets/logos.png';
 import dot from '../assets/dots.png';
 import back from '../assets/back.png';
 import { FaTrashAlt } from 'react-icons/fa'
+import { href, Link } from 'react-router-dom';
 
 const ChatRight = ({ userData, selectedUser, socket, setSelectedUser }) => {
   const [messages, setMessages] = useState([]);
@@ -108,13 +109,22 @@ const ChatRight = ({ userData, selectedUser, socket, setSelectedUser }) => {
       <div className="pr-6 py-1 sm:py-3 border-b border-[#4a8bbe] z-10 flex justify-between items-center">
         <div className="flex items-center ">
           <img src={back} alt="back" className={`w-10 h-10 ${selectedUser ? "sm:hidden block" : "hidden"}`} onClick={() => setSelectedUser(null)} />
-          <div className="flex items-center gap-2 sm:pl-4">
-            <img src={selectedUser.profilePhoto} alt="" className="w-12 h-12 border-2 border-[#4f7c9f] p-[2px] rounded-full object-cover" />
-            <div>
-              <h2 className="font-bold text-[18px] text-[#245b85]">{selectedUser.username}</h2>
-              <p className="text-xs text-gray-500">Last seen 5 ago</p>
-            </div>
-          </div>
+
+          <Link to={`/profilelayout/${selectedUser._id}`} className="cursor-pointer">
+
+              <div className="flex items-center gap-2 sm:pl-4">
+                <img
+                   src={selectedUser.profilePhoto}
+                   alt=""
+                   className="w-12 h-12 border-2 border-[#4f7c9f] p-[2px] rounded-full object-cover"
+                 />
+                <div>
+                    <h2 className="font-bold text-[18px] text-[#245b85]">{selectedUser.username}</h2>
+                    <p className="text-xs text-gray-500">Last seen 5 ago</p>
+                </div>
+              </div>
+          </Link>
+
         </div>
         <div>
           <img src={dot} alt="menu" className='w-6 cursor-pointer' onClick={() => setShowMenu((prev) => !prev)} />

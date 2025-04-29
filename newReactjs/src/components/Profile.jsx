@@ -153,15 +153,15 @@ const Profile = ({ userID }) => {
           </div>
         </div>
 
-        <div id="posts" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-4 sm:px-6 pb-12">
+        <div id="posts" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 px-4 sm:px-6 pb-12">
           {Array.isArray(post) && post.length > 0 ? (
             post.map((p, index) => (
-              <div key={index} className="relative group overflow-hidden rounded-xl shadow-md">
+              <div key={index} className="relative group overflow-hidden rounded-md shadow-md">
                 <img
                   src={p.photo}
                   alt="Post"
                   onClick={() => navigate(`/getallpost/${profiledata._id}/${p._id}`,)}
-                  className="w-full h-60 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-72 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             ))

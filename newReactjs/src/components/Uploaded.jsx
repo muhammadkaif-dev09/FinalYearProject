@@ -28,19 +28,15 @@ function Uploaded() {
     const navigate = useNavigate(); 
     
     const handleDeletePost = async (postid) => {
-        if (window.confirm("Are you sure you want to delete this post?")) {
-            try {
+
                 setTimeout(async () => {
                     await axios.delete(`/api/post/deletepost/${postid}`, {
                         withCredentials: true
                     });
                     setPosts((prev) => prev.filter((p) => p._id !== postid));
                     setActivePostId(null); 
-                }, 1000);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+                }, 1500);
+
     };
     
     
@@ -162,15 +158,14 @@ function Uploaded() {
                         </div>
                     </div>
                     <div className="flex justify-center items-center">
-                        <div className={`px-7 py-[7px] ml-2 mr-1 border text-[16px] rounded-2xl
+                        <div className={`px-7 py-[7px] ml-2 mr-1 border text-[16px] rounded-lg
                              ${user.following?.includes(post.owner._id)
-                                ? "bg-[#2B6EA0] text-white border-[#2B6EA0]"
-                                : "bg-white text-[#2B6EA0] border-[#2B6EA0]"
+                                ? "bg-white text-[#2B6EA0] border-[#2B6EA0]"
+                                : "bg-[#2B6EA0] text-white border-[#2B6EA0]"
                             }`}>
                             <button onClick={() => toggolefollow(post.owner._id)}>
                                 {user.following?.includes(post.owner._id) ? "Following" : "Follow"}
                             </button>
-
                         </div>
 
             {post.owner._id === user._id && (

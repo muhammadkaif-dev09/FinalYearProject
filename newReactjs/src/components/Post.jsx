@@ -76,7 +76,7 @@ function Post({ user, postText, setPostText }) {
                     />
                 </div>
 
-                <button className="bg-[#2B6EA0] text-white text-[16px] px-8 py-2 rounded-xl" onClick={createPost}>Post</button>
+                <button className="bg-[#2B6EA0] text-white text-[16px] px-8 py-2 rounded-lg" onClick={createPost}>Post</button>
 
             </div>
             {message && <p className="mt-3 text-center text-[15px] text-gray-600">{message}</p>}

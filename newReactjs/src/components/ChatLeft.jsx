@@ -5,9 +5,9 @@ const ChatLeft = ({ userData, followers, onSelectUser, selectedUser }) => {
   return (
     <div className='w-full h-full px-3 sm:px-6 py-7 border-r border-gray-300 flex flex-col'>
       <div className="sm:px-0 px-2">
-        <h2 className="text-4xl font-semibold mb-3 text-[#2B6EA0]">Chat</h2>
+        <h2 className="text-4xl font-semibold mb-5 text-[#2B6EA0]">Chat</h2>
         <div className='flex justify-between'>
-          <h1 className='font-medium text-xl text-[#1f4868]'>{userData?.username}</h1>
+          <h1 className='font-bold text-xl text-[#1f4868]'>{userData?.username}</h1>
           <img src={edit} alt="" className='w-6 h-6 cursor-pointer mr-1' />
         </div>
         <div className="h-[0.5px] bg-gray-500 my-5"></div>
