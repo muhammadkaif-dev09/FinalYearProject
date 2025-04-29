@@ -18,7 +18,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "localtunnel": "^2.0.2",
+    "localtunnel": "^1.8.3",
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.1",
     "mongoose-aggregate-paginate-v2": "^1.1.4",
